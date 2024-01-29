@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+  <!-- Carla ROS Bridge -->
+  <include file="$(find carla_ros_node)/launch/carla_ros_bridge.launch"/>
+  
+  <!-- Pointcloud to LaserScan -->
+  <include file="$(find carla_ros_node)/launch/carla_pointcloud_to_laserscan.launch"/>
+  
+  <!-- Carla Twist to Control -->
+  <include file="$(find carla_twist_to_control)/launch/carla_twist_to_control.launch"/>
+</launch>
