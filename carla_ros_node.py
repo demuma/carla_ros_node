@@ -145,7 +145,22 @@ def pid_control():
      
     global dt, velocity, target_velocity, error_velocity_change, set_velocity, prev_velocity, I, error_velocity
 
-   ## ADD YOUR PID CONTROL HERE ##
+    # Gains
+    kP = 1.8  #0.8
+    kI = 0.1  #0.1
+    kD = 0.0  #0.5
+
+    # Error
+    error_velocity_change = velocity - prev_velocity
+    error_velocity = target_velocity - velocity
+    
+    # Components
+    P = kP * error_velocity
+    I += kI * error_velocity * dt
+    D = kD * error_velocity_change / dt
+
+    # PID output
+    PID = P + I + D
 
     #print('Diff: %2.2f' %error_velocity_change, end='\r')
     print('Target Velocity: %2.2f PID: %2.2f Current velocity: %2.2f PID Velocity: %2.2f' %(target_velocity*3.6, PID, velocity*3.6, PID*3.6), end='\r')
